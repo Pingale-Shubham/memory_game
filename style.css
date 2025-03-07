@@ -11,13 +11,56 @@ body{
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #6563FF;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #00ff00, #ff00f2);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
 }
-.wrapper{
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: bubbleUp 10s linear infinite;
+}
+
+@keyframes bubbleUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
+.wrapper {
   padding: 25px;
-  border-radius: 10px;
-  background: #F8F8F8;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(34, 193, 195, 0.2), rgba(253, 187, 45, 0.2)); 
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* More subtle border */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect for a subtle interaction */
+.wrapper:hover {
+  background: linear-gradient(135deg, rgba(34, 193, 195, 0.3), rgba(253, 187, 45, 0.3));
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 .cards, .card, .view{
   display: flex;
@@ -65,7 +108,7 @@ body{
   height: 100%;
   position: absolute;
   border-radius: 7px;
-  background: #fff;
+  background: linear-gradient(90deg, #a1c4fd, #c2e9fb, #89f7fe);
   pointer-events: none;
   backface-visibility: hidden;
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -85,6 +128,24 @@ body{
 }
 .card.flip .front-view{
   transform: rotateY(180deg);
+}
+
+#newGame {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #66a6ff, #89f7fe);
+  border: none;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#newGame:hover {
+  background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
 }
 
 @media screen and (max-width: 700px) {
